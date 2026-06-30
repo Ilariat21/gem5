@@ -45,7 +45,7 @@ import sys
 import gem5_scons.util
 import SCons.Script
 
-# git_style_message = """
+# git_style_message = ""
 # You're missing the pre-commit/commit-msg hooks. These hook help to ensure your
 # code follows gem5's style rules on git commit and your commit messages follow
 # our commit message requirements. This script will now install these hooks in
@@ -74,15 +74,12 @@ def install_style_hooks(env):
     if hook_exists("pre-commit") and hook_exists("commit-msg"):
         return
 
-    print(git_style_message, end=" ")
+    # print(git_style_message, end=" ")
     if SCons.Script.GetOption("install_hooks"):
         print("Installing revision control hooks automatically.")
     else:
-        try:
-            input()
-        except:
-            print("Input exception, exiting scons.\n")
-            sys.exit(1)
+        print("Automatically continuing...\n")
+        pass
 
     pre_commit_install = env.Dir("#util").File("pre-commit-install.sh")
 
