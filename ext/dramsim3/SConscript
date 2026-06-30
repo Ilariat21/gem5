@@ -46,10 +46,12 @@ thermal = False
 # HAVE_DRAMSIM flag accordingly
 if not os.path.exists(Dir('.').srcnode().abspath + '/DRAMsim3'):
     env['HAVE_DRAMSIM3'] = False
+    env['HAVE_DRAMSIM'] = False # my addition ta
     Return()
 
 # We have got the folder, so add the library and build the wrappers
 env['HAVE_DRAMSIM3'] = True
+env['HAVE_DRAMSIM'] = False # my addition ta
 
 
 dramsim_path = os.path.join(Dir('#').abspath, 'ext/dramsim3/DRAMsim3/')
